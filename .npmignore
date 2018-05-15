@@ -1,0 +1,26 @@
+node_modules/
+
+# npm lockfile
+package-lock.json
+
+# tests
+coverage/
+build/test/
+
+# typescript
+src/
+tsconfig.json
+tslint.json
+
+# gulp
+gulpfile.js
+
+# ci
+circle.yml
+.circle/config.yml
+
+# misc
+extra/
+.directory
+.gitignore
+*.log
