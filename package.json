@@ -46,7 +46,9 @@
     "tslint-config-ultra": "^2.0.0",
     "typescript": "^2.6.2"
   },
-  "dependencies": {},
+  "dependencies": {
+    "token-server": "^0.0.9"
+  },
   "nyc": {
     "extension": [
       ".ts"
