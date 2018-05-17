@@ -9,5 +9,16 @@ Execute commands via a SSL encrypted connection.
 
 This package allows you to define commands and execute them from another device via an encrypted connection.
 
-## Example
+## The Plan
+
+- [x] Token Transmission Layer (token-server package)
+- [x] Queue Layer (for client)
+	- expiry timestamp
+	- check when sending
+	- is not in the messge but will be passed to the Client#enqueue(token, expiresIn)
+	- enque until next "connect", then send.
+- [ ] Response Layer
+	- messages get ids
+	- promises
+	- reject promise when expired (use setTimeout)
 

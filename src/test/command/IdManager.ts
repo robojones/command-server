@@ -19,7 +19,6 @@ describe('IdManager', () => {
 		throws(() => {
 			while (true) {
 				results.push(this.manager.reserve())
-				console.log(results)
 			}
 		})
 

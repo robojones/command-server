@@ -57,7 +57,7 @@ describe('QueueClient', () => {
 		afterEach(closeClient)
 		afterEach(closeServer)
 
-		it ('resend tokens when the client gets back online', function (this: Context, cb) {
+		it('resend tokens when the client gets back online', function (this: Context, cb) {
 			const msg = 'hello'
 
 			this.server.on('token', (token) => {
