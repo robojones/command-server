@@ -46,7 +46,7 @@ export class CommandClient extends QueueClient {
 				if (data.command === 255) {
 					const error = ErrorSerializer.deserialize(data.payload)
 					this.callbacks[data.id](error)
-				} else if (this.callbacks[data.id]) {
+				} else {
 					this.callbacks[data.id](null, data.payload)
 				}
 			}
