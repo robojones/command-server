@@ -2,8 +2,8 @@
   "name": "command-server",
   "main": "build/index",
   "typings": "build/index",
-  "description": "TLS encrypted communication",
-  "version": "0.0.6",
+  "description": "Encrypted remote async function execution.",
+  "version": "0.0.0",
   "scripts": {
     "watch": "tsc --watch",
     "lint": "tslint --project .",
@@ -24,9 +24,9 @@
     "client",
     "ssl",
     "tls",
-    "socket",
-    "buffer",
-    "message"
+    "execute",
+    "async",
+    "function"
   ],
   "author": "robojones",
   "license": "MIT",
