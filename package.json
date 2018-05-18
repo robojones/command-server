@@ -47,7 +47,7 @@
     "typescript": "^2.6.2"
   },
   "dependencies": {
-    "token-server": "^0.0.9"
+    "token-server": "^1.0.0"
   },
   "nyc": {
     "extension": [

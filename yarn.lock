@@ -2047,9 +2047,9 @@ to-regex@^3.0.1, to-regex@^3.0.2:
     regex-not "^1.0.2"
     safe-regex "^1.1.0"
 
-token-server@^0.0.9:
-  version "0.0.9"
-  resolved "https://registry.yarnpkg.com/token-server/-/token-server-0.0.9.tgz#ccb0ae843c89bf23b83fd95c1b017781852874f7"
+token-server@^1.0.0:
+  version "1.0.0"
+  resolved "https://registry.yarnpkg.com/token-server/-/token-server-1.0.0.tgz#51104486c29240b1eff14b94a11b701b5dba852e"
 
 tough-cookie@~2.3.0:
   version "2.3.4"
