@@ -1,7 +1,7 @@
 import { strictEqual } from 'assert'
 import { IBeforeAndAfterContext, ITestCallbackContext } from 'mocha'
-import { Queue } from '../../queue/Queue'
-import { QueueItem } from '../../queue/QueueItem'
+import { Queue } from '../../../lib/queue/Queue'
+import { QueueItem } from '../../../lib/queue/QueueItem'
 
 describe('Queue', () => {
 	interface Context extends IBeforeAndAfterContext, ITestCallbackContext {

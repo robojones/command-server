@@ -8,7 +8,7 @@ export interface SerializedError {
 	[prop: string]: any
 }
 
-export default class ErrorSerializer {
+export class ErrorSerializer {
 	/** Converts an Error into a standard object. */
 	public static serialize (error: Error): SerializedError {
 		const data = {

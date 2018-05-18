@@ -1,6 +1,6 @@
 import { deepEqual, throws } from 'assert'
 import { IBeforeAndAfterContext, ITestCallbackContext } from 'mocha'
-import { IdManager } from '../../command/IdManager'
+import { IdManager } from '../../../lib/command/IdManager'
 
 describe('IdManager', () => {
 	interface Context extends IBeforeAndAfterContext, ITestCallbackContext {

@@ -1,6 +1,6 @@
 import { strictEqual } from 'assert'
 import * as assert from 'assert'
-import { QueueItem } from '../../queue/QueueItem'
+import { QueueItem } from '../../../lib/queue/QueueItem'
 
 describe('QueueItem', () => {
 	describe('constructor', () => {

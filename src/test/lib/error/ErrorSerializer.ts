@@ -1,6 +1,6 @@
 import * as assert from 'assert'
 import { AssertionError } from 'assert'
-import ErrorSerializer from '../../command/ErrorSerializer'
+import { ErrorSerializer } from '../../../lib/error/ErrorSerializer'
 
 function errorAssert (actual: any, expected: any) {
 	const expectedProps = Object.keys(expected)

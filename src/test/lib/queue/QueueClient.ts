@@ -1,8 +1,8 @@
 import { strictEqual } from 'assert'
 import { IBeforeAndAfterContext, ITestCallbackContext } from 'mocha'
 import { TokenServer } from 'token-server/build'
-import { QueueClient } from '../../queue/QueueClient'
-import { clientOptions, serverOptions } from '../options'
+import { QueueClient } from '../../../lib/queue/QueueClient'
+import { clientOptions, serverOptions } from '../../options'
 
 interface Context extends IBeforeAndAfterContext, ITestCallbackContext {
 	client: QueueClient
