@@ -10,6 +10,10 @@ export class Command {
 	 * @param command The data of the command.
 	 */
 	public static tokenize(command: CommandData): Buffer {
+		if (typeof command.payload === 'undefined') {
+			throw new TypeError('The payload must not be undefined!')
+		}
+
 		const payloadString = JSON.stringify(command.payload)
 		const payload = Buffer.from(payloadString)
 		const buffer = Buffer.allocUnsafe(payload.length + 3)

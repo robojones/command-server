@@ -19,7 +19,7 @@ export class CommandClient extends QueueClient {
 
 	public async command(command: number, payload: any, expiresIn: number): Promise<any> {
 		if (command === 255) {
-			throw new Error(`Command 255 is reserved for errors.`)
+			throw new CodeError(`Command 255 is reserved for errors.`, 'ERESERVED', 'CommandError')
 		}
 
 		const id = this.ids.reserve()
@@ -56,8 +56,9 @@ export class CommandClient extends QueueClient {
 	private createTimeoutPromise(id: number, expiresIn: number): Promise<any> {
 		return new Promise<any>((resolve, reject) => {
 			setTimeout(() => {
+				this.ids.release(id)
 				delete this.callbacks[id]
-				reject(new CodeError(`Command timed out after ${expiresIn} milliseconds!`, 'ETIMEOUT', 'TimeoutError'))
+				reject(new CodeError(`Command timed out after ${expiresIn} milliseconds!`, 'ETIMEOUT', 'CommandError'))
 			}, expiresIn)
 		})
 	}
@@ -65,6 +66,7 @@ export class CommandClient extends QueueClient {
 	private createResponsePromise(id: number) {
 		return new Promise<any>((resolve, reject) => {
 			this.callbacks[id] = (error: Error | null, result?: any) => {
+				this.ids.release(id)
 				delete this.callbacks[id]
 				if (error) {
 					reject(error)
