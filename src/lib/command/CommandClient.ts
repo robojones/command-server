@@ -58,7 +58,7 @@ export class CommandClient extends QueueClient {
 			setTimeout(() => {
 				delete this.callbacks[id]
 				reject(new CodeError(`Command timed out after ${expiresIn} milliseconds!`, 'ETIMEOUT', 'TimeoutError'))
-			})
+			}, expiresIn)
 		})
 	}
 
