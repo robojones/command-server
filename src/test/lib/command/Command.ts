@@ -21,6 +21,16 @@ describe('Command', () => {
 
 			deepEqual(result, data)
 		})
+
+		it('should throw if the payload is undefined', () => {
+			throws(() => {
+				Command.tokenize({
+					id: 1,
+					command: 1,
+					payload: undefined,
+				})
+			})
+		})
 	})
 
 	describe('parse', () => {
