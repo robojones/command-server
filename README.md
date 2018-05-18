@@ -29,7 +29,7 @@ const server = new CommandServer({
 })
 
 // Implement command 0.
-server.command(0, (payload) => {
+server.command(0, async (payload) => {
 	console.log('Server received:', payload)
 	return 'result from the server'
 })
