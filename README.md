@@ -66,7 +66,7 @@ The returned promise will be **rejected** when no response arrives before the ex
 client.command(command, payload, expiresIn)
 ```
 
-- **command** `<number>` A number identifying the command you want to execute. The number must lay between 0 and 254.
+- **command** `<number>` A number identifying the command you want to execute. The number must be between 0 and 254.
 - **payload** `<any>` A parameter that will be passed to the command.
 	It may be of any value that can be stringified using `JSON.stringify()` so it must not be `undefined`.
 - **expiresIn** `<number>` Milliseconds until the command times out.
@@ -84,7 +84,7 @@ The returned promise will be **rejected** when no response arrives before the ex
 client.command(command, (payload, connection) => result)
 ```
 
-- **command** `<number>` A number identifying the command. The number lay be between 0 and 254.
+- **command** `<number>` A number identifying the command. The number must be between 0 and 254.
 - **payload** `<any>` The value that was passed as the payload parameter to the CommandClient#command().
 - **connection** `<Connection>` [see here](https://www.npmjs.com/package/token-server#connection) The connection that triggered the command.
 - **result** `<any>` A result that will be transmitted as response to the client.
