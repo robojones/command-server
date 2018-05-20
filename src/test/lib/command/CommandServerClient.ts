@@ -74,6 +74,13 @@ describe('CommandServer & CommandClient', () => {
 
 		deepEqual(result, origResult)
 	})
+})
+
+describe('CommandServer', () => {
+	beforeEach(setupServer)
+	beforeEach(setupClient)
+	afterEach(closeClient)
+	afterEach(closeServer)
 
 	it('should transmit an error when the command is not found', async function (this: Context) {
 		try {
@@ -86,6 +93,24 @@ describe('CommandServer & CommandClient', () => {
 
 		throw new Error('No error thrown.')
 	})
+
+
+	it('should emit serialisation errors', function (this: Context, cb) {
+		this.server.on('error', (error) => {
+			strictEqual(error.name, 'TypeError')
+			cb()
+		})
+
+		// This should produce a TypeError on the server.
+		this.client.send(Buffer.allocUnsafe(1))
+	})
+})
+
+describe('CommandClient', () => {
+	beforeEach(setupServer)
+	beforeEach(setupClient)
+	afterEach(closeClient)
+	afterEach(closeServer)
 
 	it('should throw an error when trying to start command 255 (reserved)', async function (this: Context) {
 		try {
@@ -140,12 +165,17 @@ describe('CommandServer & CommandClient', () => {
 	})
 
 	it('should emit serialisation errors', function (this: Context, cb) {
-		this.server.on('error', (error) => {
+		this.client.on('error', (error) => {
 			strictEqual(error.name, 'TypeError')
 			cb()
 		})
 
+		this.server.command(0, async (payload, connection) => {
+			connection.send(Buffer.allocUnsafe(1))
+			return null
+		})
+
 		// This should produce a TypeError on the server.
-		this.client.send(Buffer.allocUnsafe(1))
+		this.client.command(0, null, 50)
 	})
 })
