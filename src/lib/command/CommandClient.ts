@@ -40,15 +40,19 @@ export class CommandClient extends QueueClient {
 
 	private initEvents() {
 		this.on('token', (token) => {
-			const data = Command.parse(token)
+			try {
+				const data = Command.parse(token)
 
-			if (this.callbacks[data.id]) {
-				if (data.command === 255) {
-					const error = ErrorSerializer.deserialize(data.payload)
-					this.callbacks[data.id](error)
-				} else {
-					this.callbacks[data.id](null, data.payload)
+				if (this.callbacks[data.id]) {
+					if (data.command === 255) {
+						const error = ErrorSerializer.deserialize(data.payload)
+						this.callbacks[data.id](error)
+					} else {
+						this.callbacks[data.id](null, data.payload)
+					}
 				}
+			} catch (error) {
+				this.emit('error', error)
 			}
 		})
 	}
